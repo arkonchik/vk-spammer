@@ -94,6 +94,56 @@ def remove_auth_data():
 # -------------------------------------------
 
 
+keys_nearby = {
+    'а': ['м','п','е','к'],
+    'б': ['V','G'],
+    'в': ['X','D','F','V'],
+    'г': ['S','E','R','F','C','X'],
+    'д': ['R','D','S','W'], # 3, 4
+    'е': ['R','T','G','V','C','D'],
+    'ж': ['T','B','V','F'],
+    'з': ['Y','U','J','N'],
+    'и': ['O','K','J','U'], # 8, 9
+    'к': ['U','I','K','M','N','H'],
+}
+
+def get_nearby_letter(letter):
+    key_options = keys_nearby[letter]
+    if not key_options:  # no options found
+        return letter  # get out with the same keyid
+    return key_options[random.randint(1,len(key_options))-1]
+
+
+def make_typo(sentence, percent):
+    wordsList = sentence.split()
+    wordsCount = wordsList.count
+    countWordsWithTypo = round(percent * wordsCount)
+    wordsList.sort(key=string_length, reverse=True)
+
+    wordsWithTypo = wordsList[0:countWordsWithTypo]
+    for word in wordsWithTypo:
+        letter = choose_letter_for_typo(word)
+        if letter:
+            get_nearby_letter(letter)
+
+def choose_letter_for_typo(word):
+    countLettersInWord = word.count
+    middleOfWord = round(countLettersInWord/2)
+
+    lettersFromBeggingEnd = [3, 2]
+    for x in lettersFromBeggingEnd:
+        countLetterThatCouldChanged = countLettersInWord - (2 * x)
+        if countLetterThatCouldChanged > 0:
+                
+        
+
+    countLettersInWord - (2 * 3)
+    5 > 3
+    6 > 3,4
+    7 > 3,4,5
+    8 > 3,4,5
+
+
 class MainThread(threading.Thread):
     def run(self):
         
@@ -227,6 +277,12 @@ class MainThread(threading.Thread):
             
             acc_file = open("Groups.txt", "r", encoding='utf-8')
             
+
+            for gr in group_text:
+                print(pr+"\n")
+                listOfWords = pr.split()
+                listOfWords.count
+                print(+"\n")                     
             
             lista = [] 
 
@@ -392,7 +448,7 @@ def auth_handler():
 # Логинимся и получаем токен
 vk_session = None
 
-anticaptcha_api_key=''
+anticaptcha_api_key='60fe494e48e83c06a26da2e2d3e8d78b'
 #anticaptcha_api_key = input(     "API ключ от anti-captcha.com (оставьте пустым если он не нужен): ")
 if anticaptcha_api_key == '':
     if USE_TOKEN:

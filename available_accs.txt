@@ -1,0 +1,6 @@
+79962638349  Buyan-ay02
+79136740433  333podotri
+79962929823  idel2000
+{"username": "79962638349", "password": "Buyan-ay02"}
+{"username": "79136740433", "password": "333podotri"}
+{"username": "79962929823", "password": "idel2000"}
